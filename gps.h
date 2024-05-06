@@ -41,8 +41,8 @@ void read_GPS_Data(char *Gps_Buffer)
 {
   char* GPS_DATAHead;
   char* GPS_DATATail;
-  if ((GPS_DATAHead = strstr(Gps_Buffer, "$GPRMC,")) != NULL || (GPS_DATAHead =strstr(Gps_Buffer, "$GNRMC")) != NULL ){
-    if (((GPS_DATATail = strstr(GPS_DATAHead, "\r\n")) != NULL) && (GPS_DATATail >GPS_DATAHead)){
+  if ((GPS_DATAHead = strstr(Gps_Buffer, "$GPRMC,")) != NULL || (GPS_DATAHead =strstr(Gps_Buffer, "$GPVTG")) != NULL ){
+    if (((GPS_DATATail = strstr(GPS_DATAHead, "\n")) != NULL) && (GPS_DATATail >GPS_DATAHead)){
       memset(Save_Data.GPS_DATA, 0, strlen(Save_Data.GPS_DATA));
       memcpy(Save_Data.GPS_DATA, GPS_DATAHead, GPS_DATATail - GPS_DATAHead);
       Save_Data.GetData_Flag = 1;
